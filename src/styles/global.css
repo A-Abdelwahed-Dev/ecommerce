@@ -1,13 +1,11 @@
 .notFound {
-    text-align: center;
-    padding-top: 15%;
+  padding-top: 15%;
+  text-align: center;
 }
 
 .notFound h1 {
-    font-size: 130px;
-
+  font-size: 130px;
 }
-
 .notFound p {
-    font-size: 50px;
+  font-size: 50px;
 }

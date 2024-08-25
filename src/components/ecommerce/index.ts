@@ -1,4 +1,5 @@
-import HeaderBasket from './HeaderBasket/HeaderBasket'
-import Categore from './Categore/Categore'
-import Product from './Product/Product'
-export {HeaderBasket, Categore, Product}
+import HeaderBasket from "./HeaderBasket/HeaderBasket";
+import Category from "./Category/Category";
+import Product from "./Product/Product";
+
+export { HeaderBasket, Product, Category };
