@@ -4,7 +4,7 @@ import { actGetCategories } from "@store/categories/categoriesSlice";
 import { Container } from "react-bootstrap";
 import { Category } from "@components/eCommerce";
 import { Loading } from "@components/feedBack";
-import { GridList } from "@components/common";
+import { GridList, Heading } from "@components/common";
 
 const Categories = () => {
   const dispatch = useAppDispatch();
@@ -20,6 +20,7 @@ const Categories = () => {
 
   return (
     <Container>
+      <Heading>Categories</Heading>
       <Loading status={loading} error={error}>
         <GridList
           records={records}
