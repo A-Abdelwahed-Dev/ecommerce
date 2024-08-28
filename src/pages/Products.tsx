@@ -5,10 +5,10 @@ import {
   actGetProductsByCatPrefix,
   productsCleanUp,
 } from "@store/products/productsSlice";
-import { Container } from "react-bootstrap";
-import { GridList, Heading } from "@components/common";
-import { Loading } from "@components/feedBack";
+import { GridList } from "@components/common";
 import { Product } from "@components/eCommerce";
+import { Loading } from "@components/feedback";
+import { TProduct } from "@customTypes/product";
 
 const Products = () => {
   const params = useParams();
@@ -30,16 +30,14 @@ const Products = () => {
   }, [dispatch, params]);
 
   return (
-    <Container>
-      
-      <Heading><span className="text-capitalize">{params.prefix}  Products</span></Heading>
+    <>
       <Loading status={loading} error={error}>
-        <GridList
+        <GridList<TProduct>
           records={productsFullInfo}
           renderItem={(record) => <Product {...record} />}
         />
       </Loading>
-    </Container>
+    </>
   );
 };
 

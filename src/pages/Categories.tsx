@@ -1,17 +1,16 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actGetCategories } from "@store/categories/categoriesSlice";
-import { Container } from "react-bootstrap";
 import { Category } from "@components/eCommerce";
-import { Loading } from "@components/feedBack";
 import { GridList, Heading } from "@components/common";
+import { Loading } from "@components/feedback";
+import { TCategory } from "@customTypes/category";
 
 const Categories = () => {
   const dispatch = useAppDispatch();
   const { loading, error, records } = useAppSelector(
     (state) => state.categories
   );
-
   useEffect(() => {
     if (!records.length) {
       dispatch(actGetCategories());
@@ -19,15 +18,15 @@ const Categories = () => {
   }, [dispatch, records]);
 
   return (
-    <Container>
+    <>
       <Heading>Categories</Heading>
       <Loading status={loading} error={error}>
-        <GridList
+        <GridList<TCategory>
           records={records}
           renderItem={(record) => <Category {...record} />}
         />
       </Loading>
-    </Container>
+    </>
   );
 };
 

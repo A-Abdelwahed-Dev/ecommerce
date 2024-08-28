@@ -1,3 +1,3 @@
-import Loading from "./loading/Loading";
+import Loading from "./Loading/Loading";
 
-export { Loading }
+export { Loading };
