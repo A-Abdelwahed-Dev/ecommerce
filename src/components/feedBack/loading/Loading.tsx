@@ -8,14 +8,12 @@ type LoadingProps = {
 
 const Loading = ({ status, error, children }: LoadingProps) => {
   if (status === "pending") {
-    return <p>Loading please wait</p>;
+    return <div>loading please wait</div>;
   }
-
   if (status === "failed") {
-    return <p>{error}</p>;
+    return <div>{error}</div>;
   }
-
-  return <>{children}</>;
+  return <div>{children}</div>;
 };
 
 export default Loading;

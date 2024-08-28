@@ -1,25 +1,28 @@
-import { TProduct } from "@customTypes/product";
-import { Button, Spinner } from "react-bootstrap";
-import styles from "./styles.module.css";
+import { useEffect, useState, memo } from "react";
 import { useAppDispatch } from "@store/hooks";
 import { addToCart } from "@store/cart/cartSlice";
-import { memo, useEffect, useState } from "react";
+import { Button, Spinner } from "react-bootstrap";
+import { TProduct } from "@customTypes/product";
 
+import styles from "./styles.module.css";
 const { product, productImg, maximumNotice } = styles;
 
-const Product = memo(({ title, price, img, id, max, quantity }: TProduct) => {
+const Product = memo(({ id, title, price, img, max, quantity }: TProduct) => {
   const dispatch = useAppDispatch();
   const [isBtnDisabled, setIsBtnDisabled] = useState(false);
+
   const currentRemainingQuantity = max - (quantity ?? 0);
   const quantityReachedToMax = currentRemainingQuantity <= 0 ? true : false;
+
   useEffect(() => {
     if (!isBtnDisabled) {
       return;
     }
-    setIsBtnDisabled(true);
+
     const debounce = setTimeout(() => {
       setIsBtnDisabled(false);
     }, 300);
+
     return () => clearTimeout(debounce);
   }, [isBtnDisabled]);
 
